@@ -9,6 +9,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "sit305_7_1P";
     private static final int DATABASE_VERSION = 1;
     private static final String ITEM_TABLE_NAME = "items";
+    private SQLiteDatabase db;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -24,7 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "Description TEXT, " +
                     "Date INTEGER, " +
                     "Location TEXT, " +
-                    "PostType TEXT" +
+                    "PostType TEXT," +
+                    "Latitude REAL," +
+                    "Longitude REAL" +
                     ")";
             db.execSQL(createTableQuery);
         }

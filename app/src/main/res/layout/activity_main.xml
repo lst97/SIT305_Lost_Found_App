@@ -7,8 +7,8 @@
     tools:context=".activities.MainActivity">
 
     <LinearLayout
-        android:layout_width="374dp"
-        android:layout_height="261dp"
+        android:layout_width="353dp"
+        android:layout_height="370dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,21 +19,27 @@
             android:id="@+id/main_new_advert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:layout_weight="1"
             android:text="@string/create_new_btn_text"
             android:textSize="20sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
         <Button
             android:id="@+id/main_show_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:layout_weight="1"
             android:text="@string/show_all_btn_text"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/main_show_on_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="1"
+            android:text="Show On Map"
             android:textSize="20sp" />
     </LinearLayout>
 

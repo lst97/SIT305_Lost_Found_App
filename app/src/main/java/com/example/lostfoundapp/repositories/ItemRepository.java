@@ -45,7 +45,7 @@ public class ItemRepository implements RepositoryFactory{
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = dateFormat.format(item.getDate());
 
-        database.execSQL("INSERT INTO items (name, phone, description, date, location, postType) VALUES ('" + item.getName() + "', '" + item.getPhone() + "', '" + item.getDescription() + "', '" + dateString + "', '" + item.getLocation() + "', '" + item.getPostType() + "')");
+        database.execSQL("INSERT INTO items (name, phone, description, date, location, postType, latitude, longitude) VALUES ('" + item.getName() + "', '" + item.getPhone() + "', '" + item.getDescription() + "', '" + dateString + "', '" + item.getLocation() + "', '" + item.getPostType() + "' , '" + item.getLatitude() + "' , '" + item.getLongitude() + "')");
     }
 
     @Override
@@ -70,7 +70,9 @@ public class ItemRepository implements RepositoryFactory{
                 "description",
                 "date",
                 "location",
-                "postType"
+                "postType",
+                "latitude",
+                "longitude"
         };
         Cursor cursor = database.query("items", columns, null, null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -83,6 +85,8 @@ public class ItemRepository implements RepositoryFactory{
                 String dateString = cursor.getString(4);
                 String location = cursor.getString(5);
                 String postType = cursor.getString(6);
+                double latitude = cursor.getDouble(7);
+                double longitude = cursor.getDouble(8);
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = null;
@@ -92,7 +96,7 @@ public class ItemRepository implements RepositoryFactory{
                     e.printStackTrace();
                 }
 
-                Item item = new Item(id, name, phone, description, date, location, postType);
+                Item item = new Item(id, name, phone, description, date, location, postType, latitude, longitude);
                 // Add the item to the list
                 items.add(item);
             } while (cursor.moveToNext());
@@ -114,7 +118,9 @@ public class ItemRepository implements RepositoryFactory{
                 "description",
                 "date",
                 "location",
-                "postType"
+                "postType",
+                "latitude",
+                "longitude"
         };
         String selection = "id = ?";
         String[] selectionArgs = { String.valueOf(id) };
@@ -129,6 +135,8 @@ public class ItemRepository implements RepositoryFactory{
             String dateString = cursor.getString(4);
             String location = cursor.getString(5);
             String postType = cursor.getString(6);
+            double latitude = cursor.getDouble(7);
+            double longitude = cursor.getDouble(8);
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = null;
@@ -138,7 +146,7 @@ public class ItemRepository implements RepositoryFactory{
                 e.printStackTrace();
             }
 
-            Item item = new Item(id, name, phone, description, date, location, postType);
+            Item item = new Item(id, name, phone, description, date, location, postType, latitude, longitude);
             cursor.close();
 
             return item;
@@ -156,7 +164,9 @@ public class ItemRepository implements RepositoryFactory{
                 "description",
                 "date",
                 "location",
-                "postType"
+                "postType",
+                "latitude",
+                "longitude"
         };
         String selection = "name = ?";
         String[] selectionArgs = { itemName };
@@ -171,6 +181,8 @@ public class ItemRepository implements RepositoryFactory{
             String dateString = cursor.getString(3);
             String location = cursor.getString(4);
             String postType = cursor.getString(5);
+            double latitude = cursor.getDouble(6);
+            double longitude = cursor.getDouble(7);
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = null;
@@ -180,7 +192,7 @@ public class ItemRepository implements RepositoryFactory{
                 e.printStackTrace();
             }
 
-            Item item = new Item(id, itemName, phone, description, date, location, postType);
+            Item item = new Item(id, itemName, phone, description, date, location, postType, latitude, longitude);
             cursor.close();
 
             return item;

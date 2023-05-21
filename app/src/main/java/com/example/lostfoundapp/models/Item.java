@@ -18,6 +18,25 @@ public class Item {
     private Date date;
     private String location;
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    private double latitude;
+    private double longitude;
+
     public String getPostType() {
         return postType;
     }
@@ -28,7 +47,7 @@ public class Item {
 
     private String postType;
 
-    public Item(int id, String name, String phone, String description, Date date, String location, String postType) {
+    public Item(int id, String name, String phone, String description, Date date, String location, String postType, double latitude, double longitude) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -36,6 +55,8 @@ public class Item {
         this.date = date;
         this.location = location;
         this.postType = postType;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getName() {
